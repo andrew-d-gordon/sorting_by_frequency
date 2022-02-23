@@ -1,0 +1,11 @@
+dog,3
+a,2
+is,2
+test,2
+this,2
+broadcast,1
+emergency,1
+of,1
+only,1
+system,1
+the,1
