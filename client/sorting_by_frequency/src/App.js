@@ -16,11 +16,8 @@ function App() {
         <h1>Sorted By Frequency</h1>
       </header>
       {/* <input type="text" value={this.state.value} onChange={this.handleChange}/> */}
-      {/* Input Form */}
+      {/* Input Form and Word List*/}
       <Form title="Input"/> 
-      <br></br>
-      {/* List of sorted words by frequency */}
-      <FrequencyList wordFrequency={wordList}/>
     </div>
   );
 }

@@ -1,5 +1,9 @@
 // General Imports
 import React from "react";
+import { saveAs } from "file-saver";
+
+// Component Imports
+import FrequencyList from "./FrequencyList";
 
 // Global values
 var textInputId = 'input-words';
@@ -9,6 +13,7 @@ var wordsListDict = {};
 
 // Reset words list
 function clearWordsList() {
+    console.log('clearing words')
     wordsList = [];
     wordsListDict = {};
     document.getElementById(wordListId).innerHTML = null;
@@ -153,15 +158,19 @@ function generateFreqListElement(word, frequency) {
 
 // Sort words in input
 function processWords(e) {
-    e.preventDefault(); // Avoids submit refresh functionality
+     // Prevent submit functionality (as to not clear words present in input)
+    e.preventDefault();
 
     // Store available words/text input, trim input and split by spaces
     let newWords = document.getElementById(textInputId).value.trim();
-    let newWordsListSplit = newWords.split(' ');
+
+    // Replace newlines with spaces, then split into words by spaces
+    let newWordsListSplit = newWords.replace(/\n/g, ' ').split(' '); 
     const newWordsList = newWordsListSplit.filter(element => { // Remove '' chars
         return element !== '';
     });
 
+    // If no new words available, return away
     if (newWordsList.length === 0) {
         return;
     }
@@ -194,6 +203,27 @@ function enterPressed(e) {
     } 
 }
 
+// Sequences download of current words in wordsList
+function downloadWordsList (e, filename='sortedByFrequencyOutput.txt') {
+    // If no words in wordsList, alert and do not download
+    if (wordsList.length == 0) {
+        alert('No words have been sorted by frequency, nothing to download...');
+        return;
+    }
+
+    // Prevent submit functionality (as to not clear words present in input)
+    e.preventDefault();
+
+    // Format wordsList entries and create a Blob for it
+    let wordsListText = wordsList.reverse().join("\n");
+    let blob = new Blob([wordsListText], {
+        type: "text/plain;charset=utf-8"
+    });
+
+    // Save file with blob data that has filename
+    saveAs(blob, filename);
+}
+
 const Form = ({title = ''}) => {
     return (
         <form>
@@ -201,11 +231,12 @@ const Form = ({title = ''}) => {
             {/* <input type="text" className="todo-input"/> */}
             <textarea type='button' id={textInputId} cols="30" rows="10" onKeyPress={(e) => {enterPressed(e)}}></textarea>
             <div className="form-button">
-                <button onClick={(e) => {processWords(e)}}>
-                    SORT
-                    {/* <i className="fas fa-plus-square"></i> */}
-                </button>
+                <button onClick={(e) => {processWords(e)}}>COMPUTE FREQUENCY SORT</button>
             </div>
+
+            <br></br>
+            {/* List of sorted words by frequency */}
+            <FrequencyList clearFunction={clearWordsList} downloadFunction={downloadWordsList}/>
         </form>
     );
 }
