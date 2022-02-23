@@ -206,7 +206,7 @@ function enterPressed(e) {
 // Sequences download of current words in wordsList
 function downloadWordsList (e, filename='sortedByFrequencyOutput.txt') {
     // If no words in wordsList, alert and do not download
-    if (wordsList.length == 0) {
+    if (wordsList.length === 0) {
         alert('No words have been sorted by frequency, nothing to download...');
         return;
     }
