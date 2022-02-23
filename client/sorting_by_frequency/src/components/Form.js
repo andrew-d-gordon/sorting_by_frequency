@@ -1,6 +1,5 @@
 // General Imports
 import React from "react";
-import d3 from "d3";
 
 // Global values
 var textInputId = 'input-words';
@@ -183,7 +182,7 @@ function processWords(e) {
     // //console.log(freqList, freqList.data, freqList[0]);
     document.getElementById(wordListId).innerHTML = ''; // Clear current list displayed
     for (let i in freqListItems) { // Write updated words list to output
-        document.getElementById(wordListId).appendChild(freqListItems[i]); //freqListItems.length-1-i
+        document.getElementById(wordListId).appendChild(freqListItems[freqListItems.length-1-i]); // Reverse order
     }
 }
 
