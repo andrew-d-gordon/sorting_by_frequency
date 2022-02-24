@@ -12,17 +12,13 @@ var wordsList = []; // Holds current words evaluated for frequency
 var wordsListDict = {};
 
 // Server URL Constants
-// const serverIP = 'http://localhost';
-// const serverPort = '3001'; // Server default is set to 3001
 const processWordsRoute = '/api/processWords';
-// const serverURL = serverIP+':'+serverPort+processWordsRoute
 
 // Lock on input text when request is being processed
 var requestProcessing = false
 
 // Reset words list
 function clearWordsList() {
-    console.log('clearing words')
     wordsList = [];
     wordsListDict = {};
     document.getElementById(wordListId).innerHTML = null;
@@ -58,8 +54,7 @@ async function processWordsRequest(url = '', data = {}) {
 function fillFrequencyList(processWordsData) {
     wordsList = processWordsData.wordsList;
     wordsListDict = processWordsData.wordsListDict;
-    console.log('WordsList and wordsList dict post processing:', wordsList, wordsListDict, processWordsData);
-
+    
     // Generate new list item objects for words and frequencies
     var freqListItems = wordsList.map((entry) =>
         generateFreqListElement(entry[0], entry[1])
