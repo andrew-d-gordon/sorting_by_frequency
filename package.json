@@ -6,6 +6,9 @@
   "directories": {
     "doc": "docs"
   },
+  "engines": {
+    "node": "16.14.0"
+  },
   "scripts": {
     "start": "node server/index.js",
     "build": "cd client/sorting_by_frequency && npm install && npm run build",

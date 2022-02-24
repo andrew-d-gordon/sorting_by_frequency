@@ -105,7 +105,7 @@ function processWords(e) {
     requestProcessing = true;
 
     // Process new words with current wordsList and wordsListDict for new frequency sort
-    processWordsRequest(serverURL, 
+    processWordsRequest(processWordsRoute, // In place of serverURL when served from server
                         {newWords: newWordsList,
                         wordsList: wordsList, 
                         wordsListDict: wordsListDict})

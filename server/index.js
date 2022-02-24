@@ -2,6 +2,7 @@
 const express = require('express');
 const { json } = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const { recomputeWordsList } = require('./utils/sortByFrequency');
 
 // Set port from env, default set to 3001
@@ -11,6 +12,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 app.use(json());
+
+// Has Node serve files for built React app
+app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/public')));
 
 // Process request to sort batch of new words (wordsList and wordsListDict can be emtpy)
 app.post(
@@ -37,7 +41,12 @@ app.post(
                     wordsListDict: wordsListDict});
 });
 
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/sorting_by_frequency/public', 'index.html'));
+});
+
 // Server begins listening...
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`);
-})
+});
