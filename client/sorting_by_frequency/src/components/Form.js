@@ -15,7 +15,7 @@ var wordsListDict = {};
 const serverIP = 'http://localhost';
 const serverPort = '3001'; // Server default is set to 3001
 const processWordsRoute = '/api/processWords';
-const serverURL = serverIP+':'+serverPort+processWordsRoute
+// const serverURL = serverIP+':'+serverPort+processWordsRoute
 
 // Lock on input text when request is being processed
 var requestProcessing = false
