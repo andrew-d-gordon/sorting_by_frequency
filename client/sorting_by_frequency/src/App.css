@@ -16,6 +16,7 @@ header {
   align-items: center
 }
 
+/* Styling for Input Text and Buttons (components/Form.js) */
 form {
   display: absolute;
   justify-content: center;
@@ -31,16 +32,13 @@ form p {
 form textarea {
   height: 40vh;
   width: 40vw;
-  max-height: max(40vh, 50px);
-  max-width: max(40vw, 50px);
+  min-width: 100px;
+  min-width: 100px;
+  max-height: max(40vh, 100px);
+  max-width: max(40vw, 100px);
   padding: 10px;
   border-radius: 10px;
 }
-/* form input {
-  text-align: center;
-  min-height: 40vh;
-  min-width: 40vw;
-} */
 .form-button {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -66,30 +64,24 @@ form button:hover {
   background: #ff6f47;
   color: white;
 }
-/* form i {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-} */
+
+/* Styling for Word List and Buttons (components/FrequencyList.js) */
 .word-list-container {
   display: absolute;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-
 .word-list-container-header {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-
 .word-list-container-header p {
   text-decoration: underline;
   font-size: 2rem;
 }
-
 .word-list-button {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -118,7 +110,6 @@ form button:hover {
   background: #ff6f47;
   color: white;
 }
-
 .word-list {
   min-width: 30%;
   list-style: none;
@@ -127,7 +118,6 @@ form button:hover {
   align-items: center;
   text-align: center;
 }
-
 .word-list li {
   min-width: 30%;
   list-style: none;

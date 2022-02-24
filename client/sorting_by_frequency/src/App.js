@@ -4,18 +4,15 @@ import './App.css';
 
 // Component Imports
 import Form from "./components/Form";
-import FrequencyList from "./components/FrequencyList";
-
-// Will hold the current words and their frequencies
-var wordList = {};
 
 function App() {
   return (
     <div className="App">
+      {/* Site Header */}
       <header>
         <h1>Sorted By Frequency</h1>
       </header>
-      {/* <input type="text" value={this.state.value} onChange={this.handleChange}/> */}
+
       {/* Input Form and Word List*/}
       <Form title="Input"/> 
     </div>
