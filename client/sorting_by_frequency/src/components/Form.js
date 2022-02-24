@@ -12,8 +12,8 @@ var wordsList = []; // Holds current words evaluated for frequency
 var wordsListDict = {};
 
 // Server URL Constants
-const serverIP = 'http://localhost';
-const serverPort = '3001'; // Server default is set to 3001
+// const serverIP = 'http://localhost';
+// const serverPort = '3001'; // Server default is set to 3001
 const processWordsRoute = '/api/processWords';
 // const serverURL = serverIP+':'+serverPort+processWordsRoute
 
