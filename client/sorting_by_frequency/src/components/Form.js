@@ -22,7 +22,6 @@ var requestProcessing = false
 
 // Reset words list
 function clearWordsList() {
-    console.log('clearing words')
     wordsList = [];
     wordsListDict = {};
     document.getElementById(wordListId).innerHTML = null;
@@ -58,7 +57,6 @@ async function processWordsRequest(url = '', data = {}) {
 function fillFrequencyList(processWordsData) {
     wordsList = processWordsData.wordsList;
     wordsListDict = processWordsData.wordsListDict;
-    console.log('WordsList and wordsList dict post processing:', wordsList, wordsListDict, processWordsData);
 
     // Generate new list item objects for words and frequencies
     var freqListItems = wordsList.map((entry) =>
