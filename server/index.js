@@ -14,7 +14,7 @@ app.use(cors());
 app.use(json());
 
 // Has Node serve files for built React app
-app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/public')));
+app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/build')));
 
 // Process request to sort batch of new words (wordsList and wordsListDict can be emtpy)
 app.post(
@@ -43,7 +43,7 @@ app.post(
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/sorting_by_frequency/public', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/sorting_by_frequency/build', 'index.html'));
 });
 
 // Server begins listening...
