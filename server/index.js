@@ -13,9 +13,6 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-// Has Node serve files for built React app
-app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/build')));
-
 // Process request to sort batch of new words (wordsList and wordsListDict can be emtpy)
 app.post(
     "/api/processWords", 
@@ -40,6 +37,9 @@ app.post(
                     wordsList: newWordsList, 
                     wordsListDict: wordsListDict});
 });
+
+// Have node serve files for our React app
+app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/build')));
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
