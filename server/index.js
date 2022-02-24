@@ -16,7 +16,7 @@ app.use(json());
 app.post(
     "/api/processWords", 
     (req, res) => {
-        // Strip incoming new words list, existing words list, and words list dict from req body
+        // Pull off incoming newWords, wordsList?, and wordsListDict? from req body
         let { newWords, wordsList, wordsListDict } = req.body;
 
         // If no new words are present, respond with bad request (400)
@@ -28,7 +28,7 @@ app.post(
         // With non-empty set of new words, have words sorted by frequency
         let newWordsList =  (wordsList == null || wordsListDict == null) ?
                             recomputeWordsList(newWords) : // wordsList or wordsListDict empty, use defaults
-                            recomputeWordsList(newWords, wordsList, wordsListDict); // wordsList/wordsListDict provided
+                            recomputeWordsList(newWords, wordsList, wordsListDict);
 
         // Package recomputed wordsList and wordsListDict into JSON response and set successful status code
         res.status(200);

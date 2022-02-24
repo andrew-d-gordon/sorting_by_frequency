@@ -15,6 +15,13 @@ header {
   justify-content: center;
   align-items: center
 }
+.github-ref {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
 
 /* Styling for Input Text and Buttons (components/Form.js) */
 form {
