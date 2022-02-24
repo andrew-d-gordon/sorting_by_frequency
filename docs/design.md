@@ -32,19 +32,25 @@ Variables include `newWords`, `wordsList`, and `wordsListDict`:
 - `wordsList`: The frequency sorted list of all previous word/frequency pairs we have seen thus far (each entry as [word, frequency]).
 - `wordsListDict`: A dictionary containing key value pairs for each word and associated frequency in wordsList.
 
+```
 for word in newWords:
+
     frequency = 1
 
     if word in wordsListDict:
+
         find location where [word, wordsListDict[word]] in wordsList // binarySearch
+
         remove [word, wordsListDict[word]] from wordsList
+
         frequency = frequency + wordsListDict[word]
         
     find location to insert [word, frequency] in wordsList // bisectList
+
     insert [word, frequency] at found location // (inbetween existing elements of wordsList)
 
     wordsListDict[word] = frequency
-
+```
 
 **Runtime**:
 
