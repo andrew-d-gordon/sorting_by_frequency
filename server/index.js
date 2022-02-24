@@ -39,11 +39,11 @@ app.post(
 });
 
 // Have node serve files for our React app
-app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/public')));
+app.use(express.static(path.resolve(__dirname, '../client/sorting_by_frequency/build')));
 
 // All other GET requests not handled before will return our React app
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/sorting_by_frequency/public', 'index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/sorting_by_frequency/build', 'index.html'));
 });
 
 // Server begins listening...

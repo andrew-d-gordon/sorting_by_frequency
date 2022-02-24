@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "build": "cd server && npm start && cd .. && cd client/sorting_by_frequency && npm install && npm start",
+    "build": "cd client/sorting_by_frequency && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
