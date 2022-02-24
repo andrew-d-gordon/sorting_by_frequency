@@ -6,13 +6,13 @@ The main structure of the Sorted by Frequency application is a server and a clie
 
 **What is a frequency sort?**:
 
-Well, according to the spec, the definition of a frequency sort, as implemented here, is a list of words and their respective frequencies (from a set of input text), ordered in a decreasing order by frequency, and a lexicographic order on tied frequencies (alphabetical). As a caveat, this program aims to avoid the use of built in sorting methods to accomplish this sort of algorithm. This could be seen as unnatural, however, relying on built in sorting to keep the view of the list ordered would end up being quite costly as the list grows in size. The reason for this is one would have to run a sort over the entire list for every word that is added (assuming the words are added one by one). Worst case this could add up to O(n*nlogn) as you are running an O(nlogn) sort n times. 
+Well, according to the spec, the definition of a frequency sort, as implemented here, is a list of words and their respective frequencies (from a set of input text), ordered in a decreasing order by frequency, and a lexicographic order on tied frequencies (alphabetical). As a caveat, this program aims to avoid the use of built in sorting methods to accomplish this sort of algorithm. This could be seen as unnatural, however, relying on built in sorting to keep the view of the list ordered would end up being quite costly as the list grows in size. The reason for this is one would have to run a sort over the entire list for every word that is added (assuming the words are added one by one). Worst case this could add up to `O(n*nlogn)` as you are running an `O(nlogn)` sort `n` times (`n` being the number of words being processed). 
 
-Below I will detail how I believe I improved on this and what some additional implementations could look like.
+Below I will detail how I believe I improved on this, the runtime, and what some other implementations could have been.
 
 **Sorting By Frequency Algorithm**:
 
-The primary code for this algorithm lives in server/utils and is driven by `sortByFrequency.js`. My implementation for maintaining the order of the frequency sorted list (as new words are added) is by utilizing a dictionary to track what words have been seen and their respective frequencies, as well as custom binary search methods. To describe the run of the algorithm for a given word that would be processed:
+The primary code for this algorithm lives in server/utils and is driven by [`sortByFrequency.js`](../server/utils/sortByFrequency.js). My implementation for maintaining the order of the frequency sorted list (as new words are added) is by utilizing a dictionary to track what words have been seen and their respective frequencies, as well as custom binary search methods. To describe the run of the algorithm for a given word that would be processed:
 
 1) If we have seen the word prior, find it's current entry in our sorted list of words with binarySearch (entries of the form [word, frequency]), then remove the entry from the sorted list of words.
 
