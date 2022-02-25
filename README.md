@@ -7,6 +7,8 @@ The demo runs with the backend and the client being served on the same domain. C
 
 Information regarding the design and algorithmic implementation for this application can be found in [docs/design.md](docs/design.md).
 
+As a design choice, all extraneous punctuation in the input is stripped. This procedure takes place at the processWords function within [`Form.js`](client/sorting_by_frequency/src/components/Form.js).
+
 # Example Run
 
 To start the server and client separately, follow the below steps:
