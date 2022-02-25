@@ -82,8 +82,8 @@ function processWords(e) {
     // Store available words/text input, trim input and split by spaces
     let newWords = document.getElementById(textInputId).value.trim();
 
-    // Strip punctuation from text, replace newlines with spaces, then split into words by spaces
-    let noPunctuationNewWords = newWords.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
+    // Strip punctuation from text, convert to lowercase, remove newlines, split by spaces
+    let noPunctuationNewWords = newWords.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "").toLowerCase();
     let newWordsListSplit = noPunctuationNewWords.replace(/\n/g, ' ').split(' '); 
     const newWordsList = newWordsListSplit.filter(element => { // Remove '' left by consecutive spaces
         return element !== '';
