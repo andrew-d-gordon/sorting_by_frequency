@@ -5,6 +5,10 @@ You can view a working demo [here](https://sorting-by-frequency.herokuapp.com/).
 
 The demo runs with the backend and the client being served on the same domain. Code for the demo varies in `server/index.js` as well as `components/Form.js` in `client/` (in comparison to [main](https://github.com/andrew-d-gordon/sorting_by_frequency/tree/main)). These changes are present in the [herokuServerClient](https://github.com/andrew-d-gordon/sorting_by_frequency/tree/herokuServerClient) branch.
 
+Information regarding the design and algorithmic implementation for this application can be found in [docs/design.md](docs/design.md).
+
+As a design choice, all extraneous punctuation in the input is stripped, and all alphabetic characters are converted to lowercase. This procedure takes place at the processWords function within [`Form.js`](client/sorting_by_frequency/src/components/Form.js).
+
 # Example Run
 
 To start the server and client separately, follow the below steps:
