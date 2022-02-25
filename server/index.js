@@ -17,20 +17,21 @@ app.use(json());
 app.post(
     "/api/processWords", 
     (req, res) => {
-        // Pull off incoming newWords, wordsList?, and wordsListDict? from req body
-        let { newWords, wordsList, wordsListDict } = req.body;
+        // Attempt to pull off incoming newWords, wordsList, and wordsListDict from req body
+        let newWords = req.body.newWords || [];
+        let wordsList = req.body.wordsList || [];
+        let wordsListDict = req.body.wordsListDict || {};
 
         // If no new words are present, respond with bad request (400)
-        if (newWords === null || newWords.length === 0) {
+        if (newWords.length === 0) {
             res.status(400);
             res.json({message: "Bad request, no new words available"});
+            return;
         }
 
         // With non-empty set of new words, have words sorted by frequency
-        let newWordsList =  (wordsList == null || wordsListDict == null) ?
-                            recomputeWordsList(newWords) : // wordsList or wordsListDict empty, use defaults
-                            recomputeWordsList(newWords, wordsList, wordsListDict);
-
+        let newWordsList =  recomputeWordsList(newWords, wordsList, wordsListDict);
+        
         // Package recomputed wordsList and wordsListDict into JSON response and set successful status code
         res.status(200);
         res.json(   {message: "Successfully processed words for frequency sort", 
