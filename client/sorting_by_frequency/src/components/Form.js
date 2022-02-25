@@ -85,9 +85,10 @@ function processWords(e) {
     // Store available words/text input, trim input and split by spaces
     let newWords = document.getElementById(textInputId).value.trim();
 
-    // Replace newlines with spaces, then split into words by spaces
-    let newWordsListSplit = newWords.replace(/\n/g, ' ').split(' '); 
-    const newWordsList = newWordsListSplit.filter(element => { // Remove '' chars
+    // Strip punctuation from text, replace newlines with spaces, then split into words by spaces
+    let noPunctuationNewWords = newWords.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
+    let newWordsListSplit = noPunctuationNewWords.replace(/\n/g, ' ').split(' '); 
+    const newWordsList = newWordsListSplit.filter(element => { // Remove '' left by consecutive spaces
         return element !== '';
     });
 
@@ -120,7 +121,7 @@ function enterPressed(e) {
 }
 
 // Sequences download of current words in wordsList
-function downloadWordsList (e, filename='sortedByFrequencyOutput.txt') {
+function downloadWordsList(e, filename='sortedByFrequencyOutput.txt') {
     // If no words in wordsList, alert and do not download
     if (wordsList.length === 0) {
         alert('No words have been sorted by frequency, nothing to download...');
