@@ -1,6 +1,7 @@
 // Server attributes
 const serverIP = 'http://localhost';
 const serverPort = '3001';
+const remoteDomain = 'https://sorting-by-frequency.herokuapp.com/api/processWords'
 
 // Test endpoints
 var endpoints = ['/api/processWords'];
@@ -16,7 +17,8 @@ var bodyData = {
 // Set request options
 var options = {
     method: 'POST',
-    url: serverIP+':'+serverPort+endpoints[0],
+    // url: serverIP+':'+serverPort+endpoints[0],
+    url: remoteDomain,
     headers: {
         'content-type': 'application/json',
         'accept': 'application/json'
