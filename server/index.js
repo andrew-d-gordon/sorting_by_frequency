@@ -3,6 +3,7 @@ const express = require('express');
 const { json } = require('body-parser');
 const cors = require('cors');
 const { recomputeWordsList } = require('./utils/sortByFrequency');
+const { checkArrayElemType } = require('./utils/typeCheck');
 
 // Set port from env, default set to 3001
 const PORT = process.env.PORT || 3001;
@@ -25,6 +26,13 @@ app.post(
         if (newWords.length === 0) {
             res.status(400);
             res.json({message: "Bad request, no new words available"});
+            return;
+        }
+
+        // If newWords is not an array or contains elements other than strings, respond with bad request (400)
+        if (!Array.isArray(newWords) || !checkArrayElemType(newWords, "string")) {
+            res.status(400);
+            res.json({message: "Bad request, new words is not a list or does not contain strictly strings"});
             return;
         }
 
