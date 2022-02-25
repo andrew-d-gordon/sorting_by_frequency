@@ -29,9 +29,7 @@ app.post(
         }
 
         // With non-empty set of new words, have words sorted by frequency
-        let newWordsList =  (wordsList == null || wordsListDict == null) ?
-                            recomputeWordsList(newWords) : // wordsList or wordsListDict empty, use defaults
-                            recomputeWordsList(newWords, wordsList, wordsListDict);
+        let newWordsList = recomputeWordsList(newWords, wordsList, wordsListDict);
 
         // Package recomputed wordsList and wordsListDict into JSON response and set successful status code
         res.status(200);
